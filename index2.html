@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Information</title>
+    <link rel="stylesheet" href="style2.css">
+  </head>
+
+<body>
+    <div class="center">
+    <div><center><h1>Details</h1></center></div>
+    <div>
+        <img id="display-image" src=""  width="200" height="200">
+    </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const recentImageDataUrl = localStorage.getItem("image-storage");
+            if (recentImageDataUrl) {
+                document.querySelector("#display-image").setAttribute("src", recentImageDataUrl);
+                console.log(localStorage.getItem("jsons"));
+            }
+        });
+        let newObject = window.localStorage.getItem("jsonfile");
+        var obj = JSON.parse(newObject);
+        for (var key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                var tag = document.createElement("p");
+                tag.setAttribute("class", "json-content");
+                var text = document.createTextNode(key + " : " + obj[key]);
+                tag.appendChild(text);
+                var element = document.getElementsByTagName("body")[0];
+                element.appendChild(tag);
+            }
+        }
+    </script>
+</body>
+
+</html>
